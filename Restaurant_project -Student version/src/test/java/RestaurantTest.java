@@ -61,15 +61,15 @@ class RestaurantTest {
     }
     @Test
     public void get_total_item_cost_from_menu_should_sum_items_with_items_selected(){
-          List<Item> itemList=new ArrayList<>();
-          itemList.add(new Item("Vegetable lasagne",269));
-        itemList.add(new Item("Sweet corn soup",119));
+          List<String> itemList=new ArrayList<>();
+          itemList.add("Vegetable lasagne");
+        itemList.add("Sweet corn soup");
           int totalCost=restaurant.getTotalItemsCost(itemList);
           assertEquals(388,totalCost);
     }
     @Test
     public void get_total_item_cost_from_menu_should_sum_items_without_items_selected(){
-        List<Item> itemList=new ArrayList<>();
+        List<String> itemList=new ArrayList<>();
         int totalCost=restaurant.getTotalItemsCost(itemList);
         assertEquals(0,totalCost);
     }

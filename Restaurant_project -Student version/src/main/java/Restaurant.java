@@ -18,9 +18,9 @@ public class Restaurant {
 
     public boolean isRestaurantOpen() {
         LocalTime localTime=this.getCurrentTime();
-        int openvalue= localTime.compareTo(this.openingTime);
-        int closedvalue= localTime.compareTo(this.closingTime);
-       return !((openvalue>0 && openvalue==0) && (closedvalue==0&&closedvalue>0));
+        int openTime= localTime.compareTo(this.openingTime);
+        int closedTime= localTime.compareTo(this.closingTime);
+       return !((openTime>0 && openTime==0) && (closedTime==0&&closedTime>0));
     }
 
     public LocalTime getCurrentTime(){ return  LocalTime.now(); }
@@ -63,4 +63,17 @@ public class Restaurant {
         return name;
     }
 
+    public int getTotalItemsCost(List<String> itemList)
+    {
+        int totalCost=0;
+        if(itemList !=null && itemList.size()>0){
+            for(String item: itemList){
+               Item restaurantItemMatched= this.findItemByName(item);
+               if(restaurantItemMatched!=null){
+                   totalCost+=restaurantItemMatched.getPrice();
+               }
+            }
+        }
+            return totalCost;
+    }
 }
